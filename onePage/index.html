@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<!--
+	Eventually by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>OnePage</title>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!-- Scripts -->
+		<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+		<script src="assets/js/jquery-3.3.1.js"></script>
+		<script>
+			var arr = ['hijiki','tororo'];
+			var index = Math.floor((Math.random()*arr.length));
+			//小黑猫var name = 'hijiki';
+			//小白猫var name = 'tororo';
+			var name = arr[index];
+				
+			L2Dwidget.init({
+				pluginRootPath: "live2dw/",
+				pluginJsPath: "lib/",
+				pluginModelPath: "live2d-widget-model-"+name+"/assets/",
+				tagMode: false,
+				debug: false,
+				model: { jsonPath: "/live2dw/live2d-widget-model-"+name+"/assets/"+name+".model.json" },
+				display: { position: "right", width: 250, height: 500 },
+				mobile: { show: true },
+					log: false
+				})
+
+			$(function(){
+				//date
+				var date = new Date();
+				var weekday= ', 星期'+'日一二三四五六'.charAt(date.getDay());
+				$("#date").text(date.toLocaleDateString() + weekday);
+
+				//每日一句
+				// $.get("https://apiv3.shanbay.com/weapps/dailyquote/quote",function(data){
+				// 	alert(data);
+				// 	$("#oneWord").text(data.content);
+				// },"text/json");
+
+				//submit
+				$("#submit").click(function(){
+					var $wd = $("#search").val();
+					window.open('https://www.baidu.com/s?wd='+$wd,'target','');
+					return false;
+			})
+		});
+		</script>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<h1>Hello，张涵纳</h1>
+				<p>Hope everything goes your way</p>
+			</header>
+
+		<!-- Signup Form -->
+			<form id="search-form" method="post" action="#">
+				<input type="search" name="search" id="search" placeholder="www.baidu.com" />
+				<input type="submit" value="search" id="submit">
+			</form>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+					<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				<p id="date"></p>
+			</footer>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>
